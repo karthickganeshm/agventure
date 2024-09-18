@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Production Estimation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bk.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #4CAF50;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            width: 50%;
+        }
+        .input-group input {
+            width: 45%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        #nextPage {
+            background-color: #28a745; /* Green color for the next button */
+        }
+        #nextPage:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Apple Production Estimation</h1>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="trees">Number of Apple Trees:</label>
+            <input type="number" id="trees" min="0" placeholder="Enter number of trees">
+        </div>
+        <div class="input-group">
+            <label for="apples-per-tree">Average Apples Per Tree:</label>
+            <input type="number" id="apples-per-tree" min="0" placeholder="Enter average apple per tree">
+        </div>
+        <div class="input-group">
+            <label for="weight-per-apple">Average weight Per Apple(in grams):</label>
+            <input type="number" id="weight-per-apple" min="0" placeholder="Enter weight per apple">
+        </div>
+        <div class="input-group">
+            <label>Total Apples:</label>
+            <input type="text" id="total-apples" readonly>
+        </div>
+        <div class="input-group">
+            <label>Estimated Production (kg):</label>
+            <input type="text" id="estimated-production" readonly>
+        </div>
+        
+        <div class="button-container">
+            <button onclick="calculateProduction()">Estimate Production</button>
+            <button id="nextPage" onclick="goToNextPage()">Next</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateProduction() {
+            // Get the input values
+            const trees = document.getElementById('trees').value;
+            const applesPerTree = document.getElementById('apples-per-tree').value;
+            const weightPerApple = document.getElementById('weight-per-apple').value;
+
+            // Calculate the total apples and production weight
+            const totalApples = trees * applesPerTree;
+            const totalProduction = totalApples * weightPerApple / 1000; // Convert grams to kilograms
+
+            // Display the result in the respective fields
+            document.getElementById('total-apples').value = totalApples;
+            document.getElementById('estimated-production').value = totalProduction.toFixed(2);
+        }
+
+        function goToNextPage() {
+            window.location.href = 'expense.html'; // Redirects to nextpage.html
+        }
+    </script>
+
+</body>
+</html>

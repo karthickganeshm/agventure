@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<title>AGventure Apple Orchards</title>
+<style>
+* {
+  box-sizing: border-box;
+  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  }
+.mySlides {
+  display: none;
+  }
+img {
+  vertical-align: middle;
+  }
+.mySlides img{
+  width:100%;
+  height:550px;
+}
+
+.slideshow-container {
+  max-width: 1300px;
+  position: relative;
+  margin:20px auto;
+  padding:15px;
+  background-color:#fff;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.1);
+  border-radius:10px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+/* Button styles */
+.view-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px; 
+}
+.impact{
+  height: 100%;
+  width:80%;
+  margin:auto;
+  background-color:rgb(216, 250, 210);
+  border-radius: 30px;
+  margin-top:80px;
+}
+
+.impact-row {
+  display: flex;
+  margin: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.impact-row img {
+  width: 20%;
+  margin:20px 50px;
+  height:150px;
+}
+
+.impact-content {
+  padding: 20px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.impact-content h2 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.impact-content p {
+  margin-bottom: 0;
+  color: #333;
+}
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .impact{
+    height: 100%;
+  }
+  .images div {
+    width: 45%;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .images img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .images h2 {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  .mySlides img{
+  width:100%;
+  height:200px;
+}
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.jpeg">
+      <h1>AGventure Apple Orchards</h1>
+    </div>
+
+    <div class="menu-icon" onclick="toggleNav()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="nav-links" id ="nav-links">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="product.html">Product</a>
+      <a href="disease.html">PestDisease</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </nav>
+
+  <script >
+    function toggleNav() {
+      var navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show-nav");
+    }
+  </script>
+
+    <div class="slideshow-container">
+
+
+        <div class="mySlides fade">
+        <img src="https://www.shutterstock.com/image-photo/closeup-ripe-red-apples-glistening-600nw-2458307437.jpg" >
+        </div>
+
+        <div class="mySlides fade">
+        <img src="data:image/jpeg;base64,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">
+        </div>
+
+        <div class="mySlides fade">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcEqrSo6444AoV8a6yyc2wHljqYAZZGffskw&s" >
+        </div>
+
+    </div>
+<br>
+
+  <div style="text-align:center">
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+  </div>
+
+
+    <div class="impact">
+      <h1 style="text-align:center;padding-top:25px;">INSECTS</h1>
+      <div class="impact-row">
+        <img src="aphids.jpeg" alt="Electrical Shock Hazard">
+        <div class="impact-content">
+            <h2>Aphids</h2>
+            <p>Aphids feed on the sap from the leaves, which can cause them to curl, distort, or become misshapen.</p>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="impact-row">
+        <img src="insec2.jpeg" alt="Fire Risk">
+        <div class="impact-content">
+            <h2>Brown string</h2>
+            <p>The Brown Marmorated Stink Bug feeds by piercing the fruit with its mouthparts and sucking out the juices. </p>
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="impact-row">
+        <img src="leaf1.jpeg" alt="Equipment Damage">
+        <div class="impact-content">
+            <h2>Anthracnose Leaf</h2>
+            <p>Anthracnose causes dark lesions on apple leaves and fruit, leading to premature fruit drop. Manage it by improving air circulation and applying fungicides.</p>
+        </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="impact-row">
+        <img src="leaf2.jpeg" alt="Energy Loss">
+        <div class="impact-content">
+            <h2>Alternaria Leaf</h2>
+            <p>Alternaria causes dark spots on apples and leaves, leading to damage and drop. Manage it with better air circulation and fungicide</p>
+        </div>
+    </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <center>
+    <iframe width="1060" height="550" src="https://www.youtube.com/embed/dc0knLfDtA8?si=CHnFvIDYeGehG6e4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  
+
+
+  <div class="video-text">
+    <center><p>The AGventure system integrates drone technology to improve apple orchard management and drones equipped with advanced imaging systems (multispectral and thermal) monitor tree health, detect water stress, and identify early signs of disease. They also enable precision application of fertilizers and pesticides, reducing waste and environmental impact. Additionally, drones help estimate apple production by analyzing blossom counts and fruit set, improving planning and logistics. Finally, drone footage is used to create virtual tours for marketing, and blockchain ensures product traceability, enhancing the visibility and profitability of Himachal apples.</p> </center>
+  </div>
+</center>
+
+
+<script>
+window.embeddedChatbotConfig = {
+chatbotId: "UqMSaBF5jeiXwD7tmesMd",
+domain: "www.chatbase.co"
+}
+</script>
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="UqMSaBF5jeiXwD7tmesMd"
+domain="www.chatbase.co"
+defer>
+</script>
+
+
+
+
+<br>
+<br>
+
+<div class="footer">
+    <div class="foo-content">
+    <img style="width:150px; height:150px; margin-top:25px; " src="logo.jpeg">
+    </div>
+    <div class="foo-content">
+      <p> <a href="blog.html">Blog </a></p>
+      <p> <a href="aboutus.html"> About Us</a></p>
+      <p> <a href="contact.html"> Contact</a> </p>
+      <p> <a href="faq.html">FAQS </a></p>
+      <p> <a href="terms.html">Terms & Condition</a></p>
+    </div>
+
+    <div class="foo-content">
+    <br>
+      <p> Ph no  :  9025476322</p>
+      <p> Email<br>agventure06@gmail.com</p>
+      <p> Address <br>43,Thirunagar,dindigul. </p>
+    </div>
+
+    <div class="foo-content">
+      
+              <translate>
+        <div class ="gtrans" id="trans">
+          <div class="translate"> 
+        <h4>Translate</h4>
+                <div id="google_translate_element"> 
+                </div>
+        </div>
+        </div>
+        </translate>
+
+      <a style = "cursor:pointer">
+        <img style ="width:50px; height:50px; margin:20px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-7GrB8uBQOrF6ObnYZ15IOaSkxDQ9emHzXQDQPiIYAw-JL_9CCadt-QgFjkduWGxbaQo&usqp=CAU">
+      </a>
+      <a style = "cursor:pointer">
+        <img style ="width:50px; height:50px; margin:20px;" src="https://i.pinimg.com/474x/a2/4c/cc/a24ccc83bec854a87cc133fd52eb9161.jpg">
+      </a>
+      <a style = "cursor:pointer">
+        <img style ="width:50px; height:50px; margin:20px;" src="https://cdn3.iconfinder.com/data/icons/picons-social/57/43-twitter-512.png">
+      </a>
+    </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+            {pageLanguage: 'en'},
+            'google_translate_element'
+        );
+    }
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+  <script src="script.js"></script>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
+
+</body>
+</html>

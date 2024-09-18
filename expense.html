@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Expenses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bkg2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adding a translucent background for readability */
+            border-radius: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+        }
+        .profit-box, .expenses-box {
+            background-color: #E6EDFF;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .profit-box h2, .expenses-box h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .input-row label {
+            font-size: 14px;
+        }
+        .input-row input, .input-row select {
+            width: 48%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .expense-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .submit-btn, .next-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover, .next-btn:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Apple Expenses</h1>
+            <div><strong>Apple</strong></div>
+        </div>
+
+        <div class="profit-box">
+            <h2>Apple Total Profit: ₹<span id="totalProfit">0</span></h2>
+        </div>
+
+        <div class="income-section">
+            <div class="input-row">
+                <label for="yield">Yield (kg)</label>
+                <input type="number" id="yield" placeholder="0 kg" min="0" oninput="calculateProfit()">
+            </div>
+            <div class="input-row">
+                <label for="pricePerKilo">Price per kilo (₹)</label>
+                <input type="number" id="pricePerKilo" placeholder="₹ 0" min="0" oninput="calculateProfit()">
+            </div>
+        </div>
+
+        <div class="expenses-box">
+            <h2>Expenses ₹<span id="totalExpenses">0</span></h2>
+        </div>
+
+        <div class="expense-section">
+            <h3>Add new expense</h3>
+            <div class="input-row">
+                <select id="category">
+                    <option value="" disabled selected>Select category</option>
+                    <option value="Fertilizer">Fertilizer</option>
+                    <option value="Labor">Labor</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Packaging">Packaging</option>
+                    <option value="Irrigation">Irrigation</option>
+                    <option value="Pest Control">Pest Control</option>
+                </select>
+            </div>
+
+            <div class="input-row">
+                <input type="text" id="expenseName" placeholder="Expense name (optional)">
+                <input type="number" id="expensePrice" placeholder="₹ 0" min="0">
+            </div>
+
+            <button class="submit-btn" onclick="addExpense()">Add Expense</button>
+        </div>
+
+        <div class="button-container">
+            <button class="next-btn" onclick="goToNextPage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let totalExpenses = 0;
+
+        function addExpense() {
+            const category = document.getElementById('category').value;
+            const expensePrice = parseFloat(document.getElementById('expensePrice').value);
+
+            if (!category || isNaN(expensePrice) || expensePrice <= 0) {
+                alert("Please fill out all required fields with valid values.");
+                return;
+            }
+
+            // Add to total expenses
+            totalExpenses += expensePrice;
+
+            // Update the Expenses display
+            document.getElementById('totalExpenses').textContent = totalExpenses;
+
+            // Clear the form inputs
+            document.getElementById('category').selectedIndex = 0;
+            document.getElementById('expenseName').value = '';
+            document.getElementById('expensePrice').value = '';
+
+            // Recalculate total profit
+            calculateProfit();
+        }
+
+        function calculateProfit() {
+            const yieldValue = parseFloat(document.getElementById('yield').value);
+            const pricePerKilo = parseFloat(document.getElementById('pricePerKilo').value);
+
+            // Calculate income
+            let income = 0;
+            if (!isNaN(yieldValue) && !isNaN(pricePerKilo)) {
+                income = yieldValue * pricePerKilo;
+            }
+
+            // Calculate total profit (Income - Expenses)
+            const profit = income - totalExpenses;
+
+            // Update the total profit display
+            document.getElementById('totalProfit').textContent = profit;
+        }
+
+        function goToNextPage() {
+            window.location.href = 'shopping.html'; // Redirects to the next page
+        }
+    </script>
+
+</body>
+</html>
